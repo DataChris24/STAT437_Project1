@@ -1,0 +1,17 @@
+services:
+  rstudio:
+    build: 
+      context: . 
+        
+    environment:
+      - PASSWORD=Password1
+    expose:
+      - 8787
+    ports:
+      - 8787:8787
+    volumes:
+      - r_studio:/home/rstudio/project
+    container_name: cmimsstat437
+
+volumes:
+  r_studio:
