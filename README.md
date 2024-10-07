@@ -25,6 +25,8 @@ Docker compose and supporting files included for the ability to run RStudio with
 
 There are two options to be able to run the attached R markdown code files. Run locally with RStudio or run with the attached Docker container definition.
 
+- **NOTE:** The `devtools` package requires many system packages as dependencies before successful installation. It's purpose is to document all pacakages and their versions and is not required to view and run the main pieces of the project code. The `devtools` package is used in the last code chunk of the `.rmd` file and can be removed, or you can use the Docker container defined in the `docker-compose.yaml` file to run the file with RStudio in a web browser.
+
 ### Running Locally
 
 1. Have R and RStudio installed on your system
@@ -32,7 +34,6 @@ There are two options to be able to run the attached R markdown code files. Run 
 3. Download the data set [TCGA-PANCAN-HiSeq-801x20531.tar.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00401/TCGA-PANCAN-HiSeq-801x20531.tar.gz)
 4. Uncompress the downloaded data set file and place the two files into a folder named 'data' that is in the same directory as the downloaded `.Rmd` file
 5. Install any packages needed that aren't already installed. 
-- **NOTE:** The `devtools` package requires many system packages as dependencies before successful installation. It's purpose is to document all pacakages and their versions and is not required to view and run the main pieces of the project code. The `devtools` package is used in the last code chunk of the `.rmd` file and can be removed, or you can use the Docker container defined in the `docker-compose.yaml` file to run the file with RStudio in a web browser.
 
 ### Running With Docker Container
 
@@ -86,9 +87,7 @@ Also, the PDF and/or HTML output(s) of these R markdown files have also been inc
 
 ## Usage
 
-The purpose of this project is to show my ability to not only use R and the included packages but also my ability to create professional documentation using markdown. The `devtools` package allows for specific siting of packages and their version for reproducable results. 
-
-I have included the Docker container definition files to also show my ability to create and use Docker containers for both development and production ready applications.
+The purpose of this project is to show my ability to not only use R and the included packages but also my ability to create professional documentation using markdown. The `devtools` package allows for specific citing of packages and their versions for reproducable results. 
 
 ## Contributing
 
