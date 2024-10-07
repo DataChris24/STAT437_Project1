@@ -57,26 +57,28 @@ The classification section will focus on the use of the quadratic discriminate a
 The data set we will be using for this project is a collection of 801 samples of 20531 gene expression values, representing five (5) cancer types. These cancer types are represented by the labels "BRCA", "KIRC", "COAD", "LAUD", and "PRAD". The data can be found [here]('https://archive.ics.uci.edu/ml/machine-learning-databases/00401/TCGA-PANCAN-HiSeq-801x20531.tar.gz') as a compressed gzip ('tar.gz') file. The two files contained in the compressed file represent the gene expression data and the cancer type labels. Each sample is labeled as 'sample_x', where 'x' is the number of the sample. 
 
 ```{r get-data, eval = F}
-# Load in data from download
-tempdir <- tempdir()
-url <- 'https://archive.ics.uci.edu/ml/machine-learning-databases/00401/
-          TCGA-PANCAN-HiSeq-801x20531.tar.gz'
-file <- 'compdata.tar.gz'
-download.file(url, file)
+# This code does not need to be run as I have done this part for time expedience
 
-untar(file, exdir = '/Users/chris24/Documents/WSU/Spring\ 2022/
-        STAT\ 437/Projects/1')
+# Load in data from download
+# tempdir <- tempdir()
+# url <- 'https://archive.ics.uci.edu/ml/machine-learning-databases/00401/
+#           TCGA-PANCAN-HiSeq-801x20531.tar.gz'
+# file <- 'compdata.tar.gz'
+# download.file(url, file)
+
+# untar(file, exdir = '/Users/chris24/Documents/WSU/Spring\ 2022/
+#         STAT\ 437/Projects/1')
 ```
 
 After downloading and decompressing the files, we can read in the data and labels. This will give us access to the data and its labels in tables, which can then be used to filter the data. We must ensure that the data is read in properly to keep header labels and row names from becoming part of the data. The initial tables will then be filtered for use in other parts of the project.
 
 ```{r data2objects, eval = F}
 # Put data and labels into relevant objects
-gexp <- read.csv('TCGA-PANCAN-HiSeq-801x20531/data.csv', 
+gexp <- read.csv('~/data/data.csv', 
                  row.names = 1, header = TRUE)
-ctype <- read.csv('TCGA-PANCAN-HiSeq-801x20531/labels.csv', 
+ctype <- read.csv('~/datalabels.csv', 
                   row.names = 1, header = TRUE)
-saveRDS(ctype, 'ctype.rds') # Save as R object for faster execution
+# saveRDS(ctype, 'ctype.rds') # Save as R object for faster execution <- This has already been done and is included in the current folder
 ```
 
 # Clustering
@@ -95,7 +97,7 @@ set.seed(123)
 
 # Randomly select 1000 genes and their expressions from `gexp2`
 gexp3 <- sample(gexp2, 1000)
-saveRDS(gexp3, 'gexp3.rds') # For faster loading in Task B
+# saveRDS(gexp3, 'gexp3.rds') # For faster loading in Task B
 
 # Randomly select 30 samples and their labels (from 'labels.csv')
 gexpProj1 <- sample_n(gexp3, 30)
@@ -110,8 +112,8 @@ row.names(labels1) <- rownames
 stdgexpProj1 <- as.data.frame(scale(gexpProj1))
 
 # Save necessary objects as rda files for faster loading
-saveRDS(labels1, file = 'labels1.rds')
-saveRDS(stdgexpProj1, file = 'stdgexpProj1.rds')
+# saveRDS(labels1, file = 'labels1.rds')
+# saveRDS(stdgexpProj1, file = 'stdgexpProj1.rds')
 ```
 
 ## K-means Clustering From Scaled Data
@@ -486,8 +488,8 @@ tb.base <- gexp3[rownames(labels2), ]
 stdgexp2 <- as.data.frame(tb.base)
 
 # Save object as rds to minimize compute power when knitting
-saveRDS(stdgexp2, 'stdgexp2.rds')
-saveRDS(labels2, 'labels2.rds')
+# saveRDS(stdgexp2, 'stdgexp2.rds')
+# saveRDS(labels2, 'labels2.rds')
 ```
 
 ## Quadratic Discriminant Analysis
