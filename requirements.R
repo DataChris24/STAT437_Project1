@@ -7,6 +7,7 @@ pkgs <- c(
     'rmarkdown',
     'nycflights13',
     'formatR',
+    'igraph',
     'igraphdata',
     'plotly',
     'cluster',
@@ -16,7 +17,10 @@ pkgs <- c(
     'viridis',
     'gridExtra',
     'MASS',
-    'plot3D'
+    'misc3D',
+    'plot3D',
+    'mvtnorm',
+    'ROCR'
 )
 
 install.packages(pkgs)

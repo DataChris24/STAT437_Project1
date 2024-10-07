@@ -29,10 +29,10 @@ There are two options to be able to run the attached R markdown code files. Run 
 
 1. Have R and RStudio installed on your system
 2. Download the `.rmd` file(s) and open with RStudio
-3. Download the data set [TCGA-PANCAN-HiSeq-801x20531.tar.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00401/)
-4. Uncompress the downloaded data set file and place the extracted folder into the same directory as the downloaded `.Rmd` file
+3. Download the data set [TCGA-PANCAN-HiSeq-801x20531.tar.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00401/TCGA-PANCAN-HiSeq-801x20531.tar.gz)
+4. Uncompress the downloaded data set file and place the two files into a folder named 'data' that is in the same directory as the downloaded `.Rmd` file
 5. Install any packages needed that aren't already installed. 
-- **NOTE:** The `devtools` package requires many system packages as dependencies before successful installation. This package is used in the last code chunk of the `.rmd` file and can be removed, or you can use the Docker container defined in this repository to run the file with RStudio from a web browser.
+- **NOTE:** The `devtools` package requires many system packages as dependencies before successful installation. It's purpose is to document all pacakages and their versions and is not required to view and run the main pieces of the project code. The `devtools` package is used in the last code chunk of the `.rmd` file and can be removed, or you can use the Docker container defined in the `docker-compose.yaml` file to run the file with RStudio in a web browser.
 
 ### Running With Docker Container
 
@@ -49,32 +49,32 @@ There are two options to be able to run the attached R markdown code files. Run 
    git clone https://github.com/DataChris24/STAT437_Project1.git
    ```
 
-3. Download the data set [TCGA-PANCAN-HiSeq-801x20531.tar.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00401/)
-
-4. Uncompress the downloaded data set file and place the extracted folder into the `project` folder
-
-5. In your terminal navigate to the root folder of the repo and run 
+3. In your terminal navigate to the root folder of the repo and run 
 
    ```
    docker compose up
    ```
+   
+   If you have tried to build this container and had any issues, you may need to run the following code to ensure you get a clean rebuild of the container (though you shouldn't have any issues).
 
-   *Please note that building this container image can take up to 20 minutes. I have also included a prebuilt container image that I have uploaded to GitHub to speed up the build process. If using this prebuilt container, some modifications to the* `docker-compose.yaml` *file will need to be made*
+   ```
+   docker compose build --no-cache && docker compose up -d --force-recreate
+   ```
 
-6. When the container `cmimsstat437` has been started, navigate to your web browser of choice and go to<br>
+4. When the container `cmimsstat437` has been started, navigate to your web browser of choice and go to<br>
    `http://localhost:8787`
    <br>**OR**<br>
    `http://your.ip.address.here:8787` <- This is used for Windows machines or if using a Mac or Linix based machine and `localhost` does not work.
 
-7. When the webpage loads<br>
+5. When the webpage loads<br>
     - username = `rstuido` <br>
     - password = `Password1`
 
-8. Once inside RStuido navigate to the `projects` folder in the `Files` pane (bottom right window)
+6. Once inside RStuido navigate to the `projects` folder in the `Files` pane (bottom right window)
 
-9. Select either the `Mims_Chris_STAT_437_Project_1.Rmd` file or the `stat437Proj1.Rmd` file to interact with the file and run each of the code blocks. **NOTE:* The first file mentioned is my work while the latter is the file supplied by Dr. Chen as a template.
+7. Select either the `Mims_Chris_STAT_437_Project_1.Rmd` file or the `stat437Proj1.Rmd` file to interact with the file and run each of the code blocks. **NOTE:* The first file mentioned is my work while the latter is the file supplied by Dr. Chen as a template.
 
-10. Once you are done interacting with the file, close the browser and in your terminal run 
+8. Once you are done interacting with the file, close the browser and in your terminal run 
    
    ```
    docker compose down
